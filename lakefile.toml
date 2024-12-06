@@ -8,3 +8,8 @@ name = "Advent"
 [[lean_exe]]
 name = "advent"
 root = "Main"
+
+[[require]]
+name = "batteries"
+git = "git@github.com:leanprover-community/batteries.git"
+rev = "bump/v4.13.0"
