@@ -3,20 +3,12 @@ import Batteries.Data.String
 import Std.Internal.Parsec.Basic
 import Std.Internal.Parsec.String
 
-
 section Util
-
-def List.flatten {α} : List (List α) → List α
-  | [] => []
-  | x :: xs => x ++ List.flatten xs
 
 def List.getEvenElems {α} : List α → List α
   | [] => []
   | [x] => [x]
   | x :: _ :: xs => x :: List.getEvenElems xs
-
-#eval [1,2,3,4,5,6].getEvenElems
-#eval [1,2,3,4,5,6,7,8,9,10,11].getEvenElems
 
 partial def Except.get! [Inhabited α] : Except ε α → α
   | .ok a => a
@@ -79,14 +71,9 @@ def getMulValues (s : String) : Nat := s |>.splitOn "mul"
                                          )
                                          |>.foldl (· + ·) 0
 
-#check String.extract
-
-
 def part1 : IO String := do
   let input ← getInput
   return s!"{getMulValues input}"
-
-#eval part1
 
 def testString2 := "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
 
@@ -104,15 +91,9 @@ partial def stripDonts (s : String) : String :=
   else
     head
 
-#eval stripDonts testString2
-
-#eval testString2.splitFirst "don't()"
-
 def part2 : IO String := do
   let input ← getInput
   let cleanedInput := stripDonts input
   return s!"{getMulValues cleanedInput}"
-
-#eval part2
 
 

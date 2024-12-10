@@ -42,5 +42,3 @@ def part2 : IO String := do
 
   return s!"{answer}"
 
-#eval part1
-#eval part2

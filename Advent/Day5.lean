@@ -87,9 +87,6 @@ def test : IO Bool := do
     IO.println (testManual ruleset manual)
   return true
 
-#eval test
-#eval 5 / 2
-
 def getCenter (manual : Manual) : Nat :=
   manual[manual.length / 2]!
 
@@ -100,8 +97,6 @@ def part1 : IO String := do
           |>.map getCenter
           |>.foldl (· + ·) 0
           |> ToString.toString
-
-#eval part1
 
 def order (rules : RuleSet) (n m : Nat) : Ordering :=
   if n == m then .eq else
@@ -147,6 +142,4 @@ def part2 : IO String := do
                      |>.map getCenter
                      |>.foldl (· + ·) 0
                      |> ToString.toString
-
-#eval part2
 

@@ -1,3 +1,5 @@
+namespace Day4
+
 inductive Direction | U | UR | R | DR | D | DL | L | UL
   deriving Inhabited, DecidableEq, Repr
 
@@ -82,9 +84,6 @@ def part1 : IO String := do
     answer := answer + chars.length
   return toString answer
 
-#eval part1
-
-
 def getMass (aP : Point) (puzzle : Puzzle) : List Char × List Char :=
   let maxDist := puzzle.size - 1
   let ul? := move aP .UL maxDist
@@ -107,6 +106,4 @@ def part2 : IO String := do
     if masCheck chars1 && masCheck chars2 then answer := answer + 1
 
   return s!"{answer}"
-
-#eval part2
 

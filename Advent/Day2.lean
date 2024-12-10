@@ -27,8 +27,6 @@ def part1 : IO String := do
   let reports ← getInput
   return s!"{countSafe reports}"
 
-#eval part1
-
 def isSafeIsh (report : Report) : Bool :=
   let reportLength := report.length
   List.range reportLength |>.map (fun idx => report.eraseIdx idx)
@@ -43,4 +41,3 @@ def part2 : IO String := do
   let reports ← getInput
   return s!"{countSafeIsh reports}"
 
-#eval part2
