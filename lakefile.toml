@@ -12,4 +12,4 @@ root = "Main"
 [[require]]
 name = "batteries"
 git = "git@github.com:leanprover-community/batteries.git"
-rev = "bump/v4.13.0"
+rev = "v4.14.0"

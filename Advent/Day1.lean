@@ -2,6 +2,8 @@ import Std.Data.HashMap
 
 open Std
 
+namespace Day1
+
 def getInput : IO (List Nat × List Nat) := do
   let lines ← IO.FS.lines "./inputs/day1.txt"
   let mut list1 : List Nat := []

@@ -3,6 +3,7 @@ import Batteries.Data.String
 import Std.Internal.Parsec.Basic
 import Std.Internal.Parsec.String
 
+
 section Util
 
 def List.flatten {α} : List (List α) → List α
@@ -21,7 +22,17 @@ partial def Except.get! [Inhabited α] : Except ε α → α
   | .ok a => a
   | .error .. => panic! ":("
 
+def String.splitFirst (string substring : String) : String × Option String :=
+  let find := string.findSubstr? substring
+  if let some find := find then
+    let head := string |>.take find.startPos.byteIdx
+    let tail := string |>.drop (find.startPos.byteIdx + substring.length)
+    (head, tail)
+  else
+    (string, none)
 end Util
+
+namespace Day3
 
 inductive Instruction
   | d
@@ -78,15 +89,6 @@ def part1 : IO String := do
 #eval part1
 
 def testString2 := "xmul(2,4)&mul[3,7]!^don't()_mul(5,5)+mul(32,64](mul(11,8)undo()?mul(8,5))"
-
-def String.splitFirst (string substring : String) : String × Option String :=
-  let find := string.findSubstr? substring
-  if let some find := find then
-    let head := string |>.take find.startPos.byteIdx
-    let tail := string |>.drop (find.startPos.byteIdx + substring.length)
-    (head, tail)
-  else
-    (string, none)
 
 def findNextDo (s : String) : String :=
   let (_, tail) := s.splitFirst "do()"
