@@ -1,5 +1,7 @@
 abbrev Report := List Nat
 
+namespace Day2
+
 def getInput : IO (Array Report) := do
   let lines ← IO.FS.lines "./inputs/day2.txt"
   return lines.map fun line =>
