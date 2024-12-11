@@ -13,3 +13,5 @@ def main : IO Unit := do
   printDay 3 (← Day3.part1) (← Day3.part2)
   printDay 4 (← Day4.part1) (← Day4.part2)
   printDay 5 (← Day5.part1) (← Day5.part2)
+  printDay 6 "" ""
+  printDay 7 (← Day7.part1) (← Day7.part2)
